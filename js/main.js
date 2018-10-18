@@ -211,3 +211,22 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+// Register Service Worker
+
+function registerServiceWorker(){
+  if(!navigator.serviceWorker){
+    return;
+  };
+  navigator.serviceWorker.register('worker.js').then(function(){
+    console.log('Registration worked!');
+  }).catch(function(){
+    console.log('Registration failed');
+  });
+}
+
+window.addEventListener('load', function() {
+  registerServiceWorker();
+});
+
+
+
