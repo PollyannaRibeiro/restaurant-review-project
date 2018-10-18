@@ -82,9 +82,11 @@ fetchRestaurantFromURL = (callback) => {
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
+  name.setAttribute('aria-label', restaurant.name);
 
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
+  address.setAttribute('aria-label', `adress: ${restaurant.address}`);
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
@@ -93,6 +95,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
+  cuisine.setAttribute('aria-label', restaurant.cuisine_type);
 
   // fill operating hours
   if (restaurant.operating_hours) {
@@ -149,6 +152,9 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
+  li.setAttribute('aria-label', 'text');
+
+
   const name = document.createElement('p');
   name.innerHTML = review.name;
   li.appendChild(name);
